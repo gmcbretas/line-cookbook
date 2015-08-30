@@ -1,8 +1,7 @@
-#
-# Cookbook Name:: line
-# Recipe:: default
-#
-# Copyright (C) 2013 YOUR_COPYRIGHT
-#
-# All rights reserved - Do Not Redistribute
-#
+Array(node['line']['replace_or_add']).each do |file|
+replace_or_add 'name' do
+  path 'path'
+  pattern 'pattern'
+  line 'line'
+end
+end
