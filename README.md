@@ -25,13 +25,48 @@ the resoures.
       pattern "^#.*"
     end
 
-    add_to_list "add entry to a list"
+    add_to_list "add entry to a list" do
       path "/some/file"
       pattern "People to call: "
       delim [","]
       entry "Bobby"
     end
 
+  #In Cheffile to use wilth librarian
+
+  cookbook 'line', git: 'https://github.com/gmcbretas/line-cookbook'
+
+  #in Vagrantfile there is no need to add "depends 'line'" to your cookbook's metadata.rb to gain access to the resoures. Just use:
+
+  chef.add_recipe "line"
+
+  chef.json = {
+      line: {
+          append_if_no_line: [{
+                                  name: "make sure a line is in dangerfile",
+                                  path: "/tmp/dangerfile",
+                                  line: "HI THERE I AM STRING"
+                              }],
+          replace_or_add: [{
+                               name: "spread the love",
+                               path: "/some/file",
+                               pattern: "Why hello there.*",
+                               line: "Why hello there, you beautiful person, you."
+                           }],
+          delete_lines: [{
+                             name: "remove hash-comments from /some/file",
+                             path: "/some/file",
+                             pattern: "^#.*"
+                         }],
+          add_to_list: [{
+                            name: "add entry to a list",
+                            path: "/some/file",
+                            pattern: "People to call: ",
+                            delim: ","
+                            entry: "Bobby"
+                        }]
+      }
+  }
 
 # Notes
 So far, the only resource implemented are 
@@ -62,3 +97,4 @@ tester -  A recipe to exercise the resources
 
 # Author
 Author:: Sean OMeara (<someara@chef.io>)
+Contributor:: Guilherme Messeder (<guilherme@messeder.com>)
