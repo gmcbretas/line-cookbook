@@ -1,9 +1,8 @@
-include_recipe 'line'
 
-Array(node['line']['replace_or_add']).each do |file|
-  replace_or_add 'name' do
-    path 'path'
-    pattern 'pattern'
-    line 'line'
+Array(node['line']['replace_or_add']).each do |line_user|
+  replace_or_add  "#{line_user['name']}" do
+    path  line_user['path']
+    pattern line_user['pattern']
+    line line_user['line']
   end
 end
