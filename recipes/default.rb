@@ -25,7 +25,7 @@ Array(node['line']['add entry to a list']).each do |line_user|
   add_to_list "#{line_user['name']}" do
     path line_user['path']
     pattern line_user['pattern']
-    delim [line_user['delim']]
+    delim ["#{line_user['delim']}"]
     entry line_user['entry']
   end
 end

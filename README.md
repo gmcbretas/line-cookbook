@@ -32,11 +32,11 @@ the resoures.
       entry "Bobby"
     end
 
-  #In Cheffile to use wilth librarian
+  In Cheffile to use wilth librarian
 
   cookbook 'line', git: 'https://github.com/gmcbretas/line-cookbook'
 
-  #in Vagrantfile there is no need to add "depends 'line'" to your cookbook's metadata.rb to gain access to the resoures. Just use:
+  in Vagrantfile there is no need to add "depends 'line'" to your cookbook's metadata.rb to gain access to the resoures. Just use:
 
   chef.add_recipe "line"
 
