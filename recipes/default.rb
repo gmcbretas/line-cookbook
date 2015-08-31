@@ -1,3 +1,4 @@
+
 Array(node['line']['append_if_no_line']).each do |line_user|
   append_if_no_line "#{line_user['name']}" do
     path line_user['path']
